@@ -11,6 +11,6 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('permiso/{nombre}', function ($nombre) {
+    return $nombre;
+})->where('nombre', '[0-9]+')->name('permiso');
