@@ -1,8 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\admin;
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Models\Admin\Permiso;
 
 class PermisoController extends Controller
 {
@@ -11,9 +13,10 @@ class PermisoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($nombre, $slug = false)
+    public function index()
     {
-        return view('permiso', compact('nombre', 'slug'));
+        $permisos = Permiso::orderBy('id')->get();
+        return view('admin.permiso.index', compact('permisos'));
     }
 
     /**
@@ -21,9 +24,9 @@ class PermisoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function crear()
     {
-        return 'Sistema Crear';
+        return view('admin.permiso.crear');
     }
 
     /**
@@ -32,7 +35,7 @@ class PermisoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function guardar(Request $request)
     {
         //
     }
@@ -43,7 +46,7 @@ class PermisoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function mostrar($id)
     {
         //
     }
@@ -54,7 +57,7 @@ class PermisoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function editar($id)
     {
         //
     }
@@ -66,7 +69,7 @@ class PermisoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function actualizar(Request $request, $id)
     {
         //
     }
@@ -77,7 +80,7 @@ class PermisoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function eliminar($id)
     {
         //
     }
