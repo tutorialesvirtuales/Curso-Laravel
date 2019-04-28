@@ -7,6 +7,7 @@
 <div class="row">
     <div class="col-lg-12">
         @include('includes.form-error')
+        @include('includes.mensaje')
         <div class="box box-danger">
             <div class="box-header with-border">
                 <h3 class="box-title">Crear Menús</h3>

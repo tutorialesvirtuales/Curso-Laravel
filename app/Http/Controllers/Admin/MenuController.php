@@ -72,7 +72,7 @@ class MenuController extends Controller
      */
     public function actualizar(Request $request, $id)
     {
-        //
+        return redirect('admin/menu')->with('mensaje', 'Menú actualizado con exito');
     }
 
     /**
