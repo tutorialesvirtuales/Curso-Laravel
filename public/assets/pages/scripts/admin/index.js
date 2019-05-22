@@ -29,7 +29,6 @@ $(document).ready(function () {
                 } else {
                     Biblioteca.notificaciones('El registro no pudo ser eliminado, hay recursos usandolo', 'Biblioteca', 'error');
                 }
-
             },
             error: function () {
 
