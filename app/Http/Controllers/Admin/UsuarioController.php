@@ -42,7 +42,7 @@ class UsuarioController extends Controller
 
     public function actualizar(ValidacionUsuario $request, $id)
     {
-        Usuario::findOrFail($id)->update($request->all());
+        Usuario::findOrFail($id)->update(array_filter($request->all()));
         return redirect('admin/usuario')->with('mensaje', 'Usuario actualizado con exito');
     }
 

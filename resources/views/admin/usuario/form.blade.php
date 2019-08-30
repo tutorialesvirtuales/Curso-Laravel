@@ -17,15 +17,15 @@
     </div>
 </div>
 <div class="form-group">
-    <label for="password" class="col-lg-3 control-label requerido">Contraseña</label>
+    <label for="password" class="col-lg-3 control-label {{!isset($data) ? 'requerido' : ''}}">Contraseña</label>
     <div class="col-lg-8">
-        <input type="password" name="password" id="password" class="form-control" value="{{old('password', $data->password ?? '')}}" required/>
+        <input type="password" name="password" id="password" class="form-control" value="" {{!isset($data) ? 'required' : ''}} minlength="5"/>
     </div>
 </div>
 <div class="form-group">
-    <label for="re_password" class="col-lg-3 control-label requerido">Repita Contraseña</label>
+    <label for="re_password" class="col-lg-3 control-label {{!isset($data) ? 'requerido' : ''}}">Repita Contraseña</label>
     <div class="col-lg-8">
-        <input type="password" name="re_password" id="re_password" class="form-control" value="{{old('re_password', $data->re_password ?? '')}}" required/>
+        <input type="password" name="re_password" id="re_password" class="form-control" value="" {{!isset($data) ? 'required' : ''}} minlength="5"/>
     </div>
 </div>
 <div class="form-group">
