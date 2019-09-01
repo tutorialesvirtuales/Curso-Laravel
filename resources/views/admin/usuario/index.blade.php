@@ -27,6 +27,7 @@ Usuarios
                             <th>Usuario</th>
                             <th>Nombre</th>
                             <th>Email</th>
+                            <th>Roles</th>
                             <th class="width70"></th>
                         </tr>
                     </thead>
@@ -36,6 +37,11 @@ Usuarios
                             <td>{{$data->usuario}}</td>
                             <td>{{$data->nombre}}</td>
                             <td>{{$data->email}}</td>
+                            <td>
+                                @foreach ($data->roles as $rol)
+                                    {{$loop->last ? $rol->nombre : $rol->nombre . ', '}}
+                                @endforeach
+                            </td>
                             <td>
                                 <a href="{{route('editar_usuario', ['id' => $data->id])}}" class="btn-accion-tabla tooltipsC" title="Editar este registro">
                                     <i class="fa fa-fw fa-pencil"></i>
