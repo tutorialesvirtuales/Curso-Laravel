@@ -19,7 +19,7 @@ class DatabaseSeeder extends Seeder
         ]);
         // $this->call(UsersTableSeeder::class);
         $this->call(TablaRolSeeder::class);
-        $this->call(TablaPermisoSeeder::class);
+        //$this->call(TablaPermisoSeeder::class);
         $this->call(UsuarioAdministradorSeeder::class);
     }
 
