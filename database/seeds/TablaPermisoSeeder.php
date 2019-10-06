@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\Models\Permiso;
+use App\Models\Admin\Permiso;
 
 class TablaPermisoSeeder extends Seeder
 {
