@@ -17,4 +17,33 @@ $(document).ready(function () {
         container: 'body'
     });
     $('ul.sidebar-menu').find('li.active').parents('li').addClass('active');
+    // Trabajo con Ventana de Roles.
+    const modal = $('#modal-seleccionar-rol');
+    if (modal.length && modal.data('rol-set') == 'NO') {
+        modal.modal('show');
+    }
+
+    $('.asignar-rol').on('click', function (event) {
+        event.preventDefault();
+        const data = {
+            rol_id: $(this).data('rolid'),
+            rol_nombre: $(this).data('rolnombre'),
+            _token: $('input[name=_token]').val()
+        }
+        ajaxRequest(data, '/ajax-sesion', 'asignar-rol');
+    });
+
+    function ajaxRequest(data, url, funcion) {
+        $.ajax({
+            url: url,
+            type: 'POST',
+            data: data,
+            success: function (respuesta) {
+                if (funcion == 'asignar-rol' && respuesta.mensaje == 'ok') {
+                    $('#modal-seleccionar-rol').hide();
+                    location.reload();
+                }
+            }
+        });
+    }
 });
