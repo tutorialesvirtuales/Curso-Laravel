@@ -10,6 +10,7 @@ Libros
 @section('contenido')
 <div class="row">
     <div class="col-lg-12">
+        @csrf
         @include('includes.mensaje')
         <div class="box">
             <div class="box-header with-border">
@@ -25,13 +26,15 @@ Libros
                     <thead>
                         <tr>
                             <th>Título</th>
+                            <th>Cantidad</th>
                             <th class="width70"></th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach ($datas as $data)
                         <tr>
-                            <td>{{$data->titulo}}</td>
+                            <td><a href="{{route('ver_libro', $data)}}" class="ver-libro">{{$data->titulo}}</a></td>
+                            <td>{{$data->cantidad}}</td>
                             <td>
                                 <a href="{{route('editar_libro', ['id' => $data->id])}}" class="btn-accion-tabla tooltipsC" title="Editar este registro">
                                     <i class="fa fa-fw fa-pencil"></i>
@@ -48,6 +51,22 @@ Libros
 
                     </tbody>
                 </table>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="modal-ver-libro" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title">Libro</h4>
+            </div>
+            <div class="modal-body"></div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Cerrar</button>
             </div>
         </div>
     </div>

@@ -41,6 +41,8 @@ class LibroController extends Controller
     {
         if ($foto = Libro::setCaratula($request->foto_up))
             $request->request->add(['foto' => $foto]);
+        Libro::create($request->all());
+        return redirect()->route('libro')->with('mensaje', 'El libro se creo correctamente');
     }
 
     /**
@@ -49,9 +51,9 @@ class LibroController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function ver($id)
+    public function ver(Libro $libro)
     {
-        //
+        return view('libro.ver', compact('libro'));
     }
 
     /**
