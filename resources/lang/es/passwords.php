@@ -2,21 +2,21 @@
 
 return [
 
-	/*
-	|--------------------------------------------------------------------------
-	| Restablecer contraseña de líneas de idioma
-	|--------------------------------------------------------------------------
-	|
-        | Las siguientes líneas de idioma son las líneas predeterminadas que coinciden con las razones
-        | que proporciona la contraseñas de los usuario para un intento de actualización que
-	| es invalida, por ejemplo, para un token no válido o una nueva contraseña no válida.
-	|
-	*/
+    /*
+    |--------------------------------------------------------------------------
+    | Password Reset Language Lines
+    |--------------------------------------------------------------------------
+    |
+    | The following language lines are the default lines which match reasons
+    | that are given by the password broker for a password update attempt
+    | has failed, such as for an invalid token or invalid new password.
+    |
+    */
 
-    'password' => 'Las contraseñas deben contener al menos 6 caracters y coincidir.',
-    'reset' => 'Su contraseña ha sido cambiada.',
-    'sent' => 'Le hemos enviado un correo de cambio de contraseña!',
-    'token' => 'El código de cambio de contraseña es inválido.',
-    'user' => "No podemos encontrar un usuario con ese nombre.",
+    'password' => 'La contraseña debe tener al menos ocho caracteres y coincidir con la confirmación.',
+    'reset' => '¡Su contraseña ha sido restablecida!',
+    'sent' => '¡Recordatorio de contraseña enviado!',
+    'token' => 'Este token de restablecimiento de contraseña es inválido.',
+    'user' => 'No se ha encontrado un usuario con esa dirección de correo.',
 
 ];

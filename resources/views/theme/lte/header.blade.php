@@ -117,16 +117,18 @@
               <li class="user-body">
                 <div class="row">
                     @if(session()->get("roles") && count(session()->get("roles")) > 1)
-                    <div class="col-xs-6 text-center">
-                        <a href="#" class="cambiar-rol">Cambiar Rol</a>
-                    </div>
+                        <div class="col-xs-6 text-center">
+                            <a href="#" class="cambiar-rol">Cambiar Rol</a>
+                        </div>
                     @endif
                 </div>
               </li>
               <!-- Menu Footer-->
               <li class="user-footer">
                 <div class="pull-left">
-                  <a href="{{route('login')}}" class="btn btn-default btn-flat">Login</a>
+                    @guest
+                        <a href="{{route('login')}}" class="btn btn-default btn-flat">Login</a>
+                    @endguest
                 </div>
                 <div class="pull-right">
                   <a href="{{route('logout')}}" class="btn btn-default btn-flat">Salir</a>
