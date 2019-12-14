@@ -12,6 +12,9 @@
 */
 
 /*RUTAS PASSWORD RESET*/
+
+use Illuminate\Support\Facades\Route;
+
 Route::get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm')->name('password.request');
 Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail')->name('password.email');
 Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
@@ -67,3 +70,7 @@ Route::post('libro/{libro}', 'LibroController@ver')->name('ver_libro');
 Route::get('libro/{id}/editar', 'LibroController@editar')->name('editar_libro');
 Route::put('libro/{id}', 'LibroController@actualizar')->name('actualizar_libro');
 Route::delete('libro/{id}', 'LibroController@eliminar')->name('eliminar_libro');
+/**
+ * Rutas Libro Prestamo
+ */
+Route::get('libro-prestamo', 'LibroPrestamoController@index')->name('libro-prestamo');
