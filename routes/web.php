@@ -63,14 +63,16 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['aut
     Route::get('permiso-rol', 'PermisoRolController@index')->name('permiso_rol');
     Route::post('permiso-rol', 'PermisoRolController@guardar')->name('guardar_permiso_rol');
 });
-Route::get('libro', 'LibroController@index')->name('libro');
-Route::get('libro/crear', 'LibroController@crear')->name('crear_libro');
-Route::post('libro', 'LibroController@guardar')->name('guardar_libro');
-Route::post('libro/{libro}', 'LibroController@ver')->name('ver_libro');
-Route::get('libro/{id}/editar', 'LibroController@editar')->name('editar_libro');
-Route::put('libro/{id}', 'LibroController@actualizar')->name('actualizar_libro');
-Route::delete('libro/{id}', 'LibroController@eliminar')->name('eliminar_libro');
+Route::get('libro', 'LibroController@index')->name('libro')->middleware('auth');
+Route::get('libro/crear', 'LibroController@crear')->name('crear_libro')->middleware('auth');
+Route::post('libro', 'LibroController@guardar')->name('guardar_libro')->middleware('auth');
+Route::post('libro/{libro}', 'LibroController@ver')->name('ver_libro')->middleware('auth');
+Route::get('libro/{id}/editar', 'LibroController@editar')->name('editar_libro')->middleware('auth');
+Route::put('libro/{id}', 'LibroController@actualizar')->name('actualizar_libro')->middleware('auth');
+Route::delete('libro/{id}', 'LibroController@eliminar')->name('eliminar_libro')->middleware('auth');
 /**
  * Rutas Libro Prestamo
  */
-Route::get('libro-prestamo', 'LibroPrestamoController@index')->name('libro-prestamo');
+Route::get('libro-prestamo', 'LibroPrestamoController@index')->name('libro-prestamo')->middleware('auth');
+Route::get('libro-prestamo/crear', 'LibroPrestamoController@crear')->name('libro-prestamo.crear')->middleware('auth');
+Route::post('libro-prestamo', 'LibroPrestamoController@guardar')->name('libro-prestamo.guardar')->middleware('auth');

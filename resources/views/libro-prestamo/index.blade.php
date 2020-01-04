@@ -16,7 +16,7 @@ Libros Prestados
             <div class="box-header with-border">
                 <h3 class="box-title">Libros prestados</h3>
                 <div class="box-tools pull-right">
-                    <a href="{{route('crear_libro')}}" class="btn btn-block btn-success btn-sm">
+                    <a href="{{route('libro-prestamo.crear')}}" class="btn btn-block btn-success btn-sm">
                         <i class="fa fa-fw fa-plus-circle"></i> Prestar nuevo libro
                     </a>
                 </div>
@@ -42,7 +42,7 @@ Libros Prestados
                             <td>{{$data->usuario->nombre}}</td>
                             <td>{{$data->prestado_a}}</td>
                             <td>{{$data->fecha_prestamo}}</td>
-                            <td></td>
+                            <td>{{$data->fecha_devolucion ?? 'Prestado'}}</td>
                             <td></td>
                         </tr>
                         @endforeach
