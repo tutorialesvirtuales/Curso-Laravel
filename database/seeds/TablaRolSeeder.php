@@ -1,8 +1,8 @@
 <?php
 
-
+use Carbon\Carbon;
 use Illuminate\Database\Seeder;
-use App\Models\Admin\Rol;
+use Illuminate\Support\Facades\DB;
 
 class TablaRolSeeder extends Seeder
 {
@@ -13,15 +13,12 @@ class TablaRolSeeder extends Seeder
      */
     public function run()
     {
+        $now = Carbon::now()->toDateTimeString();
         $rols = [
-            'administrador',
-            'editor',
-            'supervisor'
+            array('id' => '1', 'nombre' => 'administrador', 'created_at' => $now, 'updated_at' => $now),
+            array('id' => '2', 'nombre' => 'editor', 'created_at' => $now, 'updated_at' => $now),
+            array('id' => '3', 'nombre' => 'supervisor', 'created_at' => $now, 'updated_at' => $now)
         ];
-        foreach($rols as $key => $value){
-            Rol::create([
-                'nombre' => $value
-            ]);
-        }
+        DB::table('rol')->insert($rols);
     }
 }

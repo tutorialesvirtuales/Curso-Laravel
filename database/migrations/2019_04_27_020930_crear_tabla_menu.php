@@ -14,7 +14,7 @@ class CrearTablaMenu extends Migration
     public function up()
     {
         Schema::create('menu', function (Blueprint $table) {
-            $table->increments('id');
+            $table->bigIncrements('id');
             $table->unsignedInteger('menu_id')->default(0);
             $table->string('nombre', 50);
             $table->string('url', 100);
