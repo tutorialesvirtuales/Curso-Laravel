@@ -11,34 +11,40 @@
 <div class="row">
     <div class="col-lg-12">
         @include('includes.mensaje')
-        <div class="box box-primary">
-            <div class="box-header with-border">
-                <h3 class="box-title">Permisos</h3>
-                <a href="{{route('crear_permiso')}}" class="btn btn-success btn-sm pull-right">Crear permiso</a>
+        <div class="card card-info">
+            <div class="card-header">
+                <h3 class="card-title">Permisos</h3>
+                <div class="card-tools">
+                    <a href="{{route('crear_permiso')}}" class="btn btn-outline-secondary btn-sm">
+                        <i class="fa fa-fw fa-plus-circle"></i> Nuevo registro
+                    </a>
+                </div>
             </div>
-            <div class="box-body table-responsive no-padding">
+            <div class="card-body table-responsive p-0">
                 <table class="table table-striped table-bordered table-hover" id="tabla-data">
                     <thead>
                         <tr>
-                            <th>ID</th>
+                            <th class="width20">ID</th>
                             <th>Nombre </th>
                             <th>Slug</th>
-                            <th class="width70"></th>
+                            <th class="width80"></th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach($permisos as $permiso)
+                        @foreach($datas as $data)
                             <tr>
-                                <td>{{$permiso->id}}</td>
-                                <td>{{$permiso->nombre}}</td>
-                                <td>{{$permiso->slug}}</td>
+                                <td>{{$data->id}}</td>
+                                <td>{{$data->nombre}}</td>
+                                <td>{{$data->slug}}</td>
                                 <td>
-                                    <a href="{{route("editar_permiso", ['id' => $permiso->id])}}" class="btn-accion-tabla tooltipsC" title="Editar este registro">
+                                    <a href="{{route("editar_permiso", ['id' => $data->id])}}" class="btn-accion-tabla tooltipsC" title="Editar este registro">
                                         <i class="fa fa-edit"></i>
                                     </a>
-                                    <form action="{{route("eliminar_permiso",  ['id' => $permiso->id])}}" class="d-inline form-eliminar" method="POST">
+                                    <form action="{{route("eliminar_permiso",  ['id' => $data->id])}}" class="d-inline form-eliminar" method="POST">
                                         @csrf @method("delete")
-                                        <button type="submit" class="btn-accion-tabla eliminar tooltipsC" title="Eliminar este registro"><i class="fa fa-times-circle text-danger"></i></button>
+                                        <button type="submit" class="btn-accion-tabla eliminar tooltipsC" title="Eliminar este registro">
+                                            <i class="fa fa-times-circle text-danger"></i>
+                                        </button>
                                     </form>
                                 </td>
                             </tr>

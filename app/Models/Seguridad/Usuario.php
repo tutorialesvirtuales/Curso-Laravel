@@ -39,8 +39,8 @@ class Usuario extends Authenticatable
         }
     }
 
-    /* public function setPasswordAttribute($pass)
+    public function setPasswordAttribute($pass)
     {
         $this->attributes['password'] = Hash::make($pass);
-    } */
+    }
 }
