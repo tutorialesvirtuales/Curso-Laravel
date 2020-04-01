@@ -76,3 +76,4 @@ Route::delete('libro/{id}', 'LibroController@eliminar')->name('eliminar_libro')-
 Route::get('libro-prestamo', 'LibroPrestamoController@index')->name('libro-prestamo')->middleware('auth');
 Route::get('libro-prestamo/crear', 'LibroPrestamoController@crear')->name('libro-prestamo.crear')->middleware('auth');
 Route::post('libro-prestamo', 'LibroPrestamoController@guardar')->name('libro-prestamo.guardar')->middleware('auth');
+Route::put('libro-prestamo/{libro}', 'LibroPrestamoController@devolucion')->name('libro-prestamo.devolver')->middleware('auth');

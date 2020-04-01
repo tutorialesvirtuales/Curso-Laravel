@@ -6,6 +6,7 @@ use App\Http\Requests\ValidacionLibroPrestamo;
 use App\Models\Libro;
 use App\Models\LibroPrestamo;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Foundation\Console\Presets\React;
 use Illuminate\Http\Request;
 
 class LibroPrestamoController extends Controller
@@ -30,7 +31,7 @@ class LibroPrestamoController extends Controller
     {
         $libros = Libro::withCount(['prestamo'  => function (Builder $query) {
             $query->whereNull('fecha_devolucion');
-        }])->get()->filter(function($item, $key){
+        }])->get()->filter(function ($item, $key) {
             return $item->cantidad > $item->prestamo_count;
         })->pluck('titulo', 'id');
         return view('libro-prestamo.crear', compact('libros'));
@@ -59,9 +60,16 @@ class LibroPrestamoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function devolucion(Request $request, $libro_id)
     {
-        //
+        if ($request->ajax()) {
+            LibroPrestamo::where('libro_id', $libro_id)
+            ->whereNull('fecha_devolucion')
+            ->update(['fecha_devolucion' => date('Y-m-d')]);
+            return response()->json(['fecha_devolucion' => date('Y-m-d')]);
+        } else {
+            abort(404);
+        }
     }
 
     /**

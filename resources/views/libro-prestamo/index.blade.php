@@ -42,8 +42,14 @@ Libros Prestados
                             <td>{{$data->usuario->nombre}}</td>
                             <td>{{$data->prestado_a}}</td>
                             <td>{{$data->fecha_prestamo}}</td>
-                            <td>{{$data->fecha_devolucion ?? 'Prestado'}}</td>
-                            <td></td>
+                            <td class="fecha-devolucion">{{$data->fecha_devolucion ?? 'Prestado'}}</td>
+                            <td>
+                                @if(!$data->fecha_devolucion)
+                                    <a href="{{route('libro-prestamo.devolver', $data->libro->id)}}" class="libro-devolucion btn-accion-tabla tooltipsC" title="Devolver este libro">
+                                        <i class="fa fa-fw fa-reply-all"></i>
+                                    </a>
+                                @endif
+                            </td>
                         </tr>
                         @endforeach
                     </tbody>
